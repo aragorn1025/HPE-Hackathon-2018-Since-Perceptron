@@ -62,7 +62,8 @@
 6. 將環境變數修改回來：此時會看到 <code>Anaconde</code> 新增的 <code>Path</code> 及第一步修改的 <code>PathBak</code> ，將 <code>PathBak</code> 的值複製，並且加在 <code>Path</code> 的值之後，看起來應該會像
    <pre><code>C:\ProgramData\Anaconda3;C:\ProgramData\Anaconda3\Library\mingw-w64\bin;C:\ProgramData\Anaconda3\Library\usr\bin;C:\ProgramData\Anaconda3\Library\bin;C:\ProgramData\Anaconda3\Scripts; ......</code></pre>
 7. 將環境變數 <code>PathBak</code> 刪除
-8. 測試安裝是否成功：啟動 <code>CMD</code> ，並且輸入 <code>conda --version</code>
+8. 測試安裝是否成功：啟動 <code>CMD</code> ，並且輸入
+   <pre><code>conda --version</code></pre>
 9. 若是成功安裝將會看到 <code>Conda</code> 版本號碼
 
   [anaconda_download]: https://www.anaconda.com/download/
@@ -78,12 +79,12 @@
    <pre><code>activate tensorflow</code></pre>
 5. 安裝 <code>TensorFlow CPU</code> 版本：於 <code>tensorflow</code> 虛擬環境下，輸入
    <pre><code>pip install tensorflow</code></pre>
-6. 啟動 <code>Python</code> 虛擬環境：繼續於 <code>tensorflow</code> 虛擬環境下，輸入
+6. 啟動 <code>Python</code> 直譯器：繼續於 <code>tensorflow</code> 虛擬環境下，輸入
    <pre><code>python</code></pre>
-7. 測試安裝是否成功：於 <code>python</code> 虛擬機中輸入
+7. 測試安裝是否成功：於 <code>python</code> 直譯器中輸入
    <pre><code>import tensorflow as tf</code></pre>
   * 可能會出現 <code>FutureWarning</code>，目前已知為部分套件未來將升級而跳出的警告，並不會影響後續的程式碼執行，請不用擔心
-8. 接著於 <code>python</code> 虛擬機中輸入
+8. 接著於 <code>python</code> 直譯器中輸入
    <pre><code>tf.__version__</code></pre>
 9. 若是成功安裝將會看到 <code>TensorFlow</code> 版本號碼
 
@@ -95,14 +96,14 @@
    <pre><code>activate tensorflow</code></pre>
 4. 安裝 <code>Keras</code> ：於 <code>tensorflow</code> 虛擬環境下，輸入
    <pre><code>pip install keras</code></pre>
-5. 啟動 <code>Python</code> 虛擬環境：於 <code>tensorflow</code> 虛擬環境下，輸入
+5. 啟動 <code>Python</code> 直譯器：於 <code>tensorflow</code> 虛擬環境下，輸入
    <pre><code>python</code></pre>
-6. 測試安裝是否成功：於 <code>python</code> 虛擬機中輸入
+6. 測試安裝是否成功：於 <code>python</code> 直譯器中輸入
    <pre><code>import tensorflow as tf</code></pre>
   * 可能會出現 <code>FutureWarning</code>，目前已知為部分套件未來將升級而跳出的警告，並不會影響後續的程式碼執行，請不用擔心
-7. 接著於 <code>python</code> 虛擬機中輸入
+7. 接著於 <code>python</code> 直譯器中輸入
    <pre><code>import keras</code></pre>
-8. 接著於 <code>python</code> 虛擬機中輸入
+8. 接著於 <code>python</code> 直譯器中輸入
    <pre><code>keras.__version__</code></pre>
 9. 若是成功安裝將會看到 <code>Keras</code> 版本號碼
 
