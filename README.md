@@ -28,9 +28,11 @@
 * 團隊名稱： Since Perceptron
 * 學校：國立中央大學
 * 指導老師： [蘇木春 教授][cilab]
-* 團隊成員： 林○凱、唐○梅、鄭○廷、[劉○宏][4]、[戴○傑][5]
+* 團隊成員： 林○凱、[唐○梅][2]、[鄭○廷][3]、[劉○宏][4]、[戴○傑][5]
 
   [cilab]: http://cilab.csie.ncu.edu.tw
+  [2]: https://github.com/candy0530
+  [3]: https://github.com/timmycheng1221
   [4]: https://github.com/koikoi1282
   [5]: https://github.com/aragorn1025
 
@@ -40,7 +42,7 @@
 
 * [智慧燈具資料分析以改善燈具維修路線與期程][first_slides]
 
-  [first_slides]: https://github.com/AragornDai/HPE-Hackathon-2018-Since-Perceptron/raw/master/slides/Hackathon-v2.3.pptx
+  [first_slides]: https://github.com/aragorn1025/HPE-Hackathon-2018-Since-Perceptron/raw/master/slides/Hackathon-v2.3.pptx
 
 * * *
 
@@ -104,8 +106,8 @@
    <pre><code>keras.__version__</code></pre>
 9. 若是成功安裝將會看到 <code>Keras</code> 版本號碼
 
-[readme_anaconda]: https://github.com/AragornDai/HPE-Hackathon-2018-Since-Perceptron/blob/master/README.md#anaconda
-[readme_tensorflow_cpu]: https://github.com/AragornDai/HPE-Hackathon-2018-Since-Perceptron/blob/master/README.md#tensorflow_cpu
+[readme_anaconda]: https://github.com/aragorn1025/HPE-Hackathon-2018-Since-Perceptron/blob/master/README.md#anaconda
+[readme_tensorflow_cpu]: https://github.com/aragorn1025/HPE-Hackathon-2018-Since-Perceptron/blob/master/README.md#tensorflow_cpu
 
 * * *
 
