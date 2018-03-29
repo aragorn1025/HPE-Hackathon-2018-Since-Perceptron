@@ -12,13 +12,13 @@
 
 <h2 id="hello_tensorflow_py"><code>hello_tensorflow.py</code></h2>
 
-測試當前環境是否已安裝 <code>TensorFlow</code>
+測試當前環境是否已安裝 <code>TensorFlow</code> ，若安裝成功，將會看到 <code>TensorFlow</code> 版本編號。
 
 * * *
 
 <h2 id="hello_keras_py"><code>hello_keras.py</code></h2>
 
-測試當前環境是否已安裝 <code>Keras</code>
+測試當前環境是否已安裝 <code>Keras</code> ，若安裝成功，將會看到 <code>Keras</code> 版本編號。
 
 * * *
 
