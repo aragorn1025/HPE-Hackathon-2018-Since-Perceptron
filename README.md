@@ -75,9 +75,9 @@
 2. 建立 <code>tensorflow</code> <code>anaconda</code> 虛擬環境：啟動 <code>CMD</code> ，並且輸入
    <pre><code>conda create --name tensorflow python=3.5 anaconda</code></pre>
 3. <code>Conda</code> 將詢問是否安裝列表中的套件，按下 <code>y</code>，並等待套件安裝完成
-4. 啟動 <code>anaconda</code> 虛擬環境：安裝完成後，繼續於 <code>CMD</code> 中輸入
+4. 啟動 <code>anaconda</code> 虛擬環境：安裝完成後，繼續於 <code>CMD</code> 中輸入以下指令，並等待安裝完成
    <pre><code>activate tensorflow</code></pre>
-5. 安裝 <code>TensorFlow CPU</code> 版本：於 <code>tensorflow</code> 虛擬環境下，輸入
+5. 安裝 <code>TensorFlow CPU</code> 版本：於 <code>tensorflow</code> 虛擬環境下，輸入以下指令，並等待安裝完成
    <pre><code>pip install tensorflow</code></pre>
 6. 啟動 <code>Python</code> 直譯器：繼續於 <code>tensorflow</code> 虛擬環境下，輸入
    <pre><code>python</code></pre>
@@ -94,7 +94,7 @@
 2. 安裝 [<code>TensorFlow (CPU version)</code>][readme_tensorflow_cpu]
 3. 啟動 <code>anaconda</code> 虛擬環境：安裝完成後，於 <code>CMD</code> 中輸入
    <pre><code>activate tensorflow</code></pre>
-4. 安裝 <code>Keras</code> ：於 <code>tensorflow</code> 虛擬環境下，輸入
+4. 安裝 <code>Keras</code> ：於 <code>tensorflow</code> 虛擬環境下，輸入以下指令，並等待安裝完成
    <pre><code>pip install keras</code></pre>
 5. 啟動 <code>Python</code> 直譯器：於 <code>tensorflow</code> 虛擬環境下，輸入
    <pre><code>python</code></pre>
