@@ -6,6 +6,7 @@
 
 * [<code>hello_tensorflow.py</code>](#hello_tensorflow_py)
 * [<code>hello_keras.py</code>](#hello_keras_py)
+* [<code>mlp_mnist.py</code>](#mlp_mnist)
 * 陸續增加
 
 * * *
@@ -19,6 +20,12 @@
 <h2 id="hello_keras_py"><code>hello_keras.py</code></h2>
 
 測試當前環境是否已安裝 <code>Keras</code> ，若安裝成功，將會看到 <code>Keras</code> 版本編號。
+
+* * *
+
+<h2 id="mlp_mnist"><code>mlp_mnist.py</code></h2>
+
+簡易多層神經網路範例，訓練資料集為 <code>MINST</code> 手寫數字辨識資料集。
 
 * * *
 
