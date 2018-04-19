@@ -1,21 +1,12 @@
-
-# coding: utf-8
-
-# In[58]:
-
-
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 import os
-from keras.utils import np_utils
-from keras.models import Sequential
+import pandas as pd
 from keras.layers import Dense
+from keras.models import Sequential
+from keras.utils import np_utils
 
 print()
-
-
-# In[59]:
 
 
 temp_dir = './temp/'
@@ -28,9 +19,6 @@ def savefig(fig, file_name):
     print('Image file saved:', temp_dir + file_name + '.png')
 
 
-# In[60]:
-
-
 print('Loading data...')
 from keras.datasets import mnist
 (x_train_image, y_train_label), (x_test_image, y_test_label) = mnist.load_data()
@@ -41,9 +29,6 @@ print('    x_test_image :', len(x_test_image))
 print('Outputs: labels.')
 print('    y_train_label:', len(y_train_label))
 print('    y_test_label :', len(y_test_label), '\n')
-
-
-# In[61]:
 
 
 images_per_row = 8
@@ -75,15 +60,8 @@ def plot_images_labels_prediction(images, labels,
     else:
         savefig(fig, 'images_test_' + str(start_index - num) + '_' + str(start_index - 1))
 
-
-# In[62]:
-
-
 plot_images_labels_prediction(x_train_image, y_train_label)
 print()
-
-
-# In[63]:
 
 
 def to_normalize_input(input_image):
@@ -95,18 +73,10 @@ def to_normalize_input(input_image):
 def to_normalize_output(output_label):
     return np_utils.to_categorical(output_label)
 
-
-# In[64]:
-
-
 x_train = to_normalize_input(x_train_image)
 x_test  = to_normalize_input(x_test_image)
-
 y_train = to_normalize_output(y_train_label)
 y_test  = to_normalize_output(y_test_label)
-
-
-# In[65]:
 
 
 model = Sequential()
@@ -127,15 +97,7 @@ model.add(
         bias_initializer = 'normal'
     )
 )
-
-
-# In[66]:
-
-
 print(model.summary(), '\n')
-
-
-# In[67]:
 
 
 model.compile(
@@ -145,9 +107,6 @@ model.compile(
 )
 
 
-# In[68]:
-
-
 train_history = model.fit(
     x = x_train,
     y = y_train,
@@ -155,9 +114,6 @@ train_history = model.fit(
     epochs = 20,
     validation_split = 0.2
 )
-
-
-# In[17]:
 
 
 def show_train_history(train_history, train, validation, title = None):
@@ -171,21 +127,9 @@ def show_train_history(train_history, train, validation, title = None):
 #   plt.show()
     savefig(plt, 'training_history_' + train)
 
-
-# In[29]:
-
-
 show_train_history(train_history, 'acc', 'val_acc')
-
-
-# In[44]:
-
-
 show_train_history(train_history, 'loss', 'val_loss')
 print()
-
-
-# In[36]:
 
 
 print('Evaluating: ')
@@ -194,15 +138,9 @@ print("The loss for test data:", scores[0])
 print("The accuracy for test data:", scores[1] * 100, '%\n')
 
 
-# In[52]:
-
-
 print('Predicting: ')
 prediction = model.predict_classes(x_test, verbose = 1)
 print(pd.crosstab(y_test_label, prediction, colnames=['predict'], rownames=['y']), '\n')
-
-
-# In[55]:
 
 
 print('Data frame for error cases:')
@@ -210,15 +148,8 @@ df = pd.DataFrame({'label': y_test_label, 'predict': prediction})
 print(df[df.label != df.predict], '\n')
 
 
-# In[54]:
-
-
 plot_images_labels_prediction(x_test_image, y_test_label, prediction, start_index = 110)
 print()
 
 
-# In[57]:
-
-
 print('Process ended.', '\n')
-
