@@ -2,34 +2,34 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import pandas as pd
-from keras.layers import Dense
+import shutil
+from keras.layers import Dense, Dropout
 from keras.models import Sequential
 from keras.utils import np_utils
 
 print()
 
-
 temp_dir = './temp/'
-if not os.path.exists(temp_dir):
+if os.path.exists(temp_dir):
+    shutil.rmtree(temp_dir)
     os.makedirs(temp_dir)
-    print('Create directory:', temp_dir, '\n')
+    print('Clear the directory: {}\n'.format(temp_dir))
+else:
+    os.makedirs(temp_dir)
+    print('Create the directory: {}\n'.format(temp_dir))
 
 def savefig(fig, file_name):
     fig.savefig(temp_dir + file_name + '.png')
     print('Image file saved:', temp_dir + file_name + '.png')
 
-
 print('Loading data...')
 from keras.datasets import mnist
 (x_train_image, y_train_label), (x_test_image, y_test_label) = mnist.load_data()
 print('Done')
-print('Inputs:', str(x_train_image[0].shape), 'images.')
-print('    x_train_image:', len(x_train_image))
-print('    x_test_image :', len(x_test_image))
-print('Outputs: labels.')
-print('    y_train_label:', len(y_train_label))
-print('    y_test_label :', len(y_test_label), '\n')
-
+print("x_train_image.shape = {}".format(x_train_image.shape))
+print("y_train_label.shape = {}".format(y_train_label.shape))
+print(" x_test_image.shape = {}".format(x_test_image.shape))
+print(" y_test_label.shape = {}\n".format(y_test_label.shape))
 
 images_per_row = 8
 defualt_row_number = 1
@@ -63,32 +63,39 @@ def plot_images_labels_prediction(images, labels,
 plot_images_labels_prediction(x_train_image, y_train_label)
 print()
 
+# normalize input image, 0 < input < 1
+def normalize_input(input_image):
+    return input_image.reshape(input_image.shape[0], 28 * 28).astype('float64') / 255
 
-def to_normalize_input(input_image):
-    input_shape = input_image.shape
-    if len(input_shape) != 3:
-        raise ValueError("The length of the shape should be 3.")
-    return input_image.reshape(input_shape[0], input_shape[1] * input_shape[2]).astype('float64') / 255
-
-def to_normalize_output(output_label):
+# normalize output label as one-hot encoding, for example, 4 will normalize as [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+def normalize_output(output_label):
     return np_utils.to_categorical(output_label)
 
-x_train = to_normalize_input(x_train_image)
-x_test  = to_normalize_input(x_test_image)
-y_train = to_normalize_output(y_train_label)
-y_test  = to_normalize_output(y_test_label)
+# data preprocessing
+x_train = normalize_input(x_train_image)
+x_test  = normalize_input(x_test_image)
+y_train = normalize_output(y_train_label)
+y_test  = normalize_output(y_test_label)
 
-
+# create multi-layer preceptron neural network
 model = Sequential()
+# hidden layer 1
 model.add(
     Dense(
-        units = 200,
+        units = 100,
         input_dim = 784,
         activation = 'relu',
         kernel_initializer = 'normal',
         bias_initializer = 'normal'
     )
 )
+# dropout layer
+model.add(
+    Dropout(
+        rate = 0.5
+    )
+)
+# hidden layer 2
 model.add(
     Dense(
         units = 10,
@@ -99,14 +106,14 @@ model.add(
 )
 print(model.summary(), '\n')
 
-
+# definite training method
 model.compile(
     optimizer = 'adam',
     loss = 'categorical_crossentropy',
     metrics = ['accuracy']
 )
 
-
+# start training
 train_history = model.fit(
     x = x_train,
     y = y_train,
@@ -115,8 +122,7 @@ train_history = model.fit(
     validation_split = 0.2
 )
 
-
-def show_train_history(train_history, train, validation, title = None):
+def show_train_history(train_history, train, validation):
     plt.clf()
     plt.plot(train_history.history[train])
     plt.plot(train_history.history[validation])
@@ -131,25 +137,22 @@ show_train_history(train_history, 'acc', 'val_acc')
 show_train_history(train_history, 'loss', 'val_loss')
 print()
 
-
 print('Evaluating: ')
 scores = model.evaluate(x_test, y_test)
-print("The loss for test data:", scores[0])
-print("The accuracy for test data:", scores[1] * 100, '%\n')
-
+print("The loss of testing data:", scores[0])
+print("The accuracy of testing data = {}%".format(scores[1] * 100.0))
 
 print('Predicting: ')
 prediction = model.predict_classes(x_test, verbose = 1)
 print(pd.crosstab(y_test_label, prediction, colnames=['predict'], rownames=['y']), '\n')
 
-
 print('Data frame for error cases:')
 df = pd.DataFrame({'label': y_test_label, 'predict': prediction})
-print(df[df.label != df.predict], '\n')
+error_list = df.loc[df.label != df.predict]
+print(error_list, '\n')
 
-
-plot_images_labels_prediction(x_test_image, y_test_label, prediction, start_index = 110)
+print("The error case is at i = {}".format(error_list.index[0] - 3))
+plot_images_labels_prediction(x_test_image, y_test_label, prediction, start_index = max(0, error_list.index[0] - 3))
 print()
-
 
 print('Process ended.', '\n')
