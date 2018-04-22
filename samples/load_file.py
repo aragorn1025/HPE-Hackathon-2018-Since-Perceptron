@@ -8,7 +8,8 @@ Created on Tue Apr 10 21:42:32 2018
 from openpyxl import load_workbook
 
 # open file
-wb = load_workbook(filename = 'filename')
+file = 'data/data01.xlsx'
+wb = load_workbook(file)
 # get all sheets in the file
 sheets = wb.get_sheet_names()
 # get the first sheet name
@@ -23,17 +24,18 @@ columns = ws.columns
 
 content = []
 
-for row in rows:
+#for row in rows:
     # get each row's column value
-    line = [col.value for col in row]
+#    line = [col.value for col in row]
     # add into the list
-    content.append(line)
+#    content.append(line)
     
 print(content)
 
-#for row in ws.iter_rows():
-#    for cell in row:
-#        print(cell.value, end='\t')
-#    print(end='\n')
+for row in ws.iter_rows():
+    for cell in row:
+        print(cell.value, end='\t')
+    print(end='\n')
 
-# print (ws.cell(row=2, column=1).value)
+print (ws.cell(row=2, column=1).value)
+
