@@ -7,6 +7,7 @@
 * [<code>hello_tensorflow.py</code>](#hello_tensorflow_py)
 * [<code>hello_keras.py</code>](#hello_keras_py)
 * [<code>mlp_mnist.py</code>](#mlp_mnist)
+* [<code>cnn_mnist.py</code>](#cnn_mnist)
 * 陸續增加
 
 * * *
@@ -26,6 +27,12 @@
 <h2 id="mlp_mnist"><code>mlp_mnist.py</code></h2>
 
 簡易多層神經網路範例，訓練資料集為 <code>MINST</code> 手寫數字辨識資料集。
+
+* * *
+
+<h2 id="cnn_mnist"><code>cnn_mnist.py</code></h2>
+
+簡易卷積神經網路範例，訓練資料集為 <code>MINST</code> 手寫數字辨識資料集。
 
 * * *
 

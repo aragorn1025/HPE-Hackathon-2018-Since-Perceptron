@@ -14,24 +14,29 @@ from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 
-# read mnist data
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
+temp_dir = './temp/'
+if not os.path.exists(temp_dir):
+    os.makedirs(temp_dir)
+    print('Create directory:', temp_dir, '\n')
 
-print("x_train.shape={}, y_train.shape={}".format(x_train.shape, y_train.shape))
-print("x_test.shape={}, y_test.shape={}".format(x_test.shape, y_test.shape))
+# read mnist data
+(x_train_image, y_train_label), (x_test_image, y_test_label) = mnist.load_data()
+
+print("x_train_image.shape={}, y_train_label.shape={}".format(x_train_image.shape, y_train_label.shape))
+print("x_test_image.shape={}, y_test_label.shape={}".format(x_test_image.shape, y_test_label.shape))
 
 # normalize input data, 0 < data < 1
 def normalize_input(input_train):
     return input_train.reshape(input_train.shape[0], 28, 28, 1).astype('float64') / 255
 
-# one-hot encoding, 0 0 0 0 1 0 0 0 0 0 (?)
+# one-hot encoding, 0 0 0 0 1 0 0 0 0 0
 def normalize_output(output):
     return np_utils.to_categorical(output)
 
-x_train = normalize_input(x_train)
-x_test = normalize_input(x_test)
-y_train = normalize_output(y_train)
-y_test = normalize_output(y_test)
+x_train = normalize_input(x_train_image)
+x_test = normalize_input(x_test_image)
+y_train = normalize_output(y_train_label)
+y_test = normalize_output(y_test_label)
 
 # build CNN model
 model = Sequential()
@@ -100,7 +105,7 @@ train_history = model.fit(
         x = x_train,
         y = y_train, 
         validation_split = 0.2,  
-        epochs = 1, 
+        epochs = 10, 
         batch_size = 300, 
         verbose = 1
         )
@@ -121,11 +126,12 @@ show_train_history(train_history, 'loss', 'val_loss')
 # accuracy
 print("Evaluating:")
 scores = model.evaluate(x_test, y_test)  
+print("Loss of testing data:", scores[0])
 print("Accuracy of testing data = {:2.1f}%".format(scores[1]*100.0))  
 
 # predicting
 prediction = model.predict_classes(x_test)
 
 # confusing matrix
-#print(pd.crosstab(y_test, prediction, colnames=['predict'], rownames=['label']), '\n')
+print(pd.crosstab(y_test_label, prediction, colnames=['predict'], rownames=['label']), '\n')
 
