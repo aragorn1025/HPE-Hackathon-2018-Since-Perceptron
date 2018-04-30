@@ -1,15 +1,27 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Apr 22 23:32:57 2018
-
-@author: KoI
-"""
 
 from openpyxl import load_workbook
+import os
+import shutil
+
+temp_dir = './temp/'
+if os.path.exists(temp_dir):
+    shutil.rmtree(temp_dir)
+    os.makedirs(temp_dir)
+    print('Clear the directory: {}\n'.format(temp_dir))
+else:
+    os.makedirs(temp_dir)
+    print('Create the directory: {}\n'.format(temp_dir))
+
+def savefig(fig, file_name):
+    fig.savefig(temp_dir + file_name + '.png')
+    print('Image file saved:', temp_dir + file_name + '.png')
+
 
 # open file
-file = 'data/data01.xlsx'
-wb = load_workbook(file)
+loadfile = '../data/data6.xlsx'
+# wriltefile = './temp/data6_normalization.xlsx'
+wb = load_workbook(loadfile)
 # get all sheets in the file
 sheets = wb.get_sheet_names()
 # get the first sheet name
@@ -72,4 +84,4 @@ print(d)
 # write in sheet
 writesheet.append(normalize)
 # save file
-wb.save(file)
+wb.save(loadfile)
