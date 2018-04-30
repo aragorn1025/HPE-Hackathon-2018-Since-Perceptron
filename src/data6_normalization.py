@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from openpyxl import load_workbook
+from openpyxl import Workbook
 import os
 import shutil
 
@@ -13,39 +14,30 @@ else:
     os.makedirs(temp_dir)
     print('Create the directory: {}\n'.format(temp_dir))
 
-def savefig(fig, file_name):
-    fig.savefig(temp_dir + file_name + '.png')
-    print('Image file saved:', temp_dir + file_name + '.png')
-
-
 # open file
 loadfile = '../data/data6.xlsx'
-# wriltefile = './temp/data6_normalization.xlsx'
-wb = load_workbook(loadfile)
+loadbook = load_workbook(loadfile)
 # get all sheets in the file
-sheets = wb.get_sheet_names()
+sheets = loadbook.get_sheet_names()
 # get the first sheet name
 sheet0 = sheets[0]
 
-# create new sheet
-if len(sheets) <2:
-    wb.create_sheet('Normalization', index=1)
-    sheets = wb.get_sheet_names()
-
-sheet1 = sheets[1]
+# create new file
+writefile = './temp/data6_normalization.xlsx'
+writebook = Workbook()
 
 # get sheets
-ws = wb.get_sheet_by_name(name = sheet0)
-writesheet = wb.get_sheet_by_name(name = sheet1)
+loadsheet = loadbook.get_sheet_by_name(name = sheet0)
+writesheet = writebook.active
 # get the row number from the sheet
-rows = ws.rows
+rows = loadsheet.rows
 # get the column number
-columns = ws.columns
+columns = loadsheet.columns
 
 content = []
 
 # get 故障原因
-for col in ws.iter_cols(min_row=2, max_col=4, min_col=4):
+for col in loadsheet.iter_cols(min_row = 2, max_col = 4, min_col = 4):
     for cell in col:
         content.append(cell.value)
 #    print(content)
@@ -84,4 +76,4 @@ print(d)
 # write in sheet
 writesheet.append(normalize)
 # save file
-wb.save(loadfile)
+writebook.save(writefile)
