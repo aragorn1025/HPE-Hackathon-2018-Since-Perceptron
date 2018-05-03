@@ -4,7 +4,7 @@
 *.swp
 
 # data, should be secreat
-data/
+**/data/
 
 # temp files
 **/temp/
