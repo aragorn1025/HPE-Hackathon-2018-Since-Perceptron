@@ -5,6 +5,9 @@ from openpyxl import Workbook
 import os
 import shutil
 
+import sys
+sys.path.insert(0, '/normalization_function')
+
 temp_dir = './temp/'
 if os.path.exists(temp_dir):
     shutil.rmtree(temp_dir)
@@ -29,51 +32,18 @@ writebook = Workbook()
 # get sheets
 loadsheet = loadbook.get_sheet_by_name(name = sheet0)
 writesheet = writebook.active
-# get the row number from the sheet
-rows = loadsheet.rows
-# get the column number
-columns = loadsheet.columns
-
-content = []
-
-# get 故障原因
-for col in loadsheet.iter_cols(min_row = 2, max_col = 4, min_col = 4):
-    for cell in col:
-        content.append(cell.value)
-#    print(content)
-
-dic = []
-match = False
-
-# get all value in content
-for i in content:
-    for j in dic:
-        if i == j:
-            match = True
-            break
-    if match == False:
-        dic.append(i)
-    match = False
 
 # normalize
-normalize = []
-for i in content:
-    for j in dic:
-        if i == j:
-            normalize.append(dic.index(j))
+normalization_dictionary, normalize = normalization(loadsheet, 2, 4, 4)
+starttimenormalize = time_normalization(loadsheet, 2, 5, 5)
+endtimenormalize = time_normalization(loadsheet, 2, 6, 6)
 
-# normalizec = list(zip(normalize))
-print(normalize)
+print(normalization_dictionary)
 
-# make dictionary
-d = {}
-count = 0
-for i in dic:
-    d[count] = i
-    count = count + 1
-print(d)
+# write into sheet
+write(writesheet, normalize, 1)
+write(writesheet, starttimenormalize, 2)
+write(writesheet, endtimenormalize, 3)
 
-# write in sheet
-writesheet.append(normalize)
 # save file
 writebook.save(writefile)
