@@ -38,8 +38,6 @@ normalization_dictionary, normalize = normalization(loadsheet, 2, 4, 4)
 starttimenormalize = time_normalization_datetime(loadsheet, 2, 5, 5)
 endtimenormalize = time_normalization_datetime(loadsheet, 2, 6, 6)
 
-print(normalization_dictionary)
-
 # write into sheet
 write(writesheet, normalize, 1)
 write(writesheet, starttimenormalize, 2)

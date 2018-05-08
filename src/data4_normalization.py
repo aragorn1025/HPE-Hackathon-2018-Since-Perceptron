@@ -42,8 +42,6 @@ reason_dictionary, reasonnormalize = normalization(loadsheet, 3, 5, 5)
 endtimenormalize = time_normalization_datestr(loadsheet, 3, 6, 6)
 status_dictionary, statusnormalize = normalization(loadsheet, 3, 7, 7)
 
-print(owner_dictionary)
-
 # write into sheet
 write(writesheet, starttimenormalize, 1)
 write(writesheet, ownernormalize, 2)

@@ -39,16 +39,16 @@ mathod_dictionary, mathodnormalize = normalization(loadsheet, 4, 13, 13)
 type_dictionary, typenormalize = normalization(loadsheet, 4, 14, 14)
 height_dictionary, heightnormalize = normalization(loadsheet, 4, 15, 15)
 timenormalize = time_normalization_datetime(loadsheet, 4, 16, 16)
-
-print(owner_dictionary)
+switch_dictionary, switchnormalize = normalization(loadsheet, 4, 17, 17)
+box_dictionary, boxnormalize = normalization(loadsheet, 4, 18, 18)
 
 # write into sheet
 write(writesheet, mathodnormalize, 1)
 write(writesheet, typenormalize, 2)
 write(writesheet, heightnormalize, 3)
 write(writesheet, timenormalize, 4)
+write(writesheet, switchnormalize, 5)
+write(writesheet, boxnormalize, 6)
 
 # save file
 writebook.save(writefile)
-
-

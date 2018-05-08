@@ -18,7 +18,7 @@ else:
     print('Create the directory: {}\n'.format(temp_dir))
 
 # open file
-loadfile = '../data/data5.xlsx'
+loadfile = '../data/data2.xlsx'
 loadbook = load_workbook(loadfile)
 # get all sheets in the file
 sheets = loadbook.get_sheet_names()
@@ -26,7 +26,7 @@ sheets = loadbook.get_sheet_names()
 sheet0 = sheets[0]
 
 # create new file
-writefile = './temp/data5_normalization.xlsx'
+writefile = './temp/data2_normalization.xlsx'
 writebook = Workbook()
 
 # get sheets
@@ -35,20 +35,20 @@ writesheet = writebook.active
 
 # normalize
 
-starttimenormalize = time_normalization_datestr(loadsheet, 3, 1, 1)
-owner_dictionary, ownernormalize = normalization(loadsheet, 3, 2, 2)
-type_dictionary, typenormalize = normalization(loadsheet, 3, 4, 4)
-reason_dictionary, reasonnormalize = normalization(loadsheet, 3, 5, 5)
-endtimenormalize = time_normalization_datestr(loadsheet, 3, 6, 6)
-status_dictionary, statusnormalize = normalization(loadsheet, 3, 7, 7)
+mathod_dictionary, mathodnormalize = normalization(loadsheet, 4, 13, 13)
+type_dictionary, typenormalize = normalization(loadsheet, 4, 14, 14)
+height_dictionary, heightnormalize = normalization(loadsheet, 4, 15, 15)
+timenormalize = time_normalization_datetime(loadsheet, 4, 16, 16)
+switch_dictionary, switchnormalize = normalization(loadsheet, 4, 17, 17)
+box_dictionary, boxnormalize = normalization(loadsheet, 4, 18, 18)
 
 # write into sheet
-write(writesheet, starttimenormalize, 1)
-write(writesheet, ownernormalize, 2)
-write(writesheet, typenormalize, 3)
-write(writesheet, reasonnormalize, 4)
-write(writesheet, endtimenormalize, 5)
-write(writesheet, statusnormalize, 6)
+write(writesheet, mathodnormalize, 1)
+write(writesheet, typenormalize, 2)
+write(writesheet, heightnormalize, 3)
+write(writesheet, timenormalize, 4)
+write(writesheet, switchnormalize, 5)
+write(writesheet, boxnormalize, 6)
 
 # save file
 writebook.save(writefile)
