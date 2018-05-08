@@ -45,8 +45,6 @@ def time_normalization_datetime(loadsheet, min_row, max_col, min_col):
     for col in loadsheet.iter_cols(min_row = min_row, max_col = max_col, min_col = min_col):
         for cell in col:
             timecontent.append(cell.value)
-            
-    print(type(timecontent[0]))
         
     timenormalize = []
     for value in timecontent:

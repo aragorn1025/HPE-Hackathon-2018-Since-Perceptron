@@ -40,6 +40,7 @@ owner_dictionary, ownernormalize = normalization(loadsheet, 3, 2, 2)
 type_dictionary, typenormalize = normalization(loadsheet, 3, 4, 4)
 reason_dictionary, reasonnormalize = normalization(loadsheet, 3, 5, 5)
 endtimenormalize = time_normalization_datestr(loadsheet, 3, 6, 6)
+status_dictionary, statusnormalize = normalization(loadsheet, 3, 7, 7)
 
 print(owner_dictionary)
 
@@ -49,6 +50,7 @@ write(writesheet, ownernormalize, 2)
 write(writesheet, typenormalize, 3)
 write(writesheet, reasonnormalize, 4)
 write(writesheet, endtimenormalize, 5)
+write(writesheet, statusnormalize, 6)
 
 # save file
 writebook.save(writefile)
