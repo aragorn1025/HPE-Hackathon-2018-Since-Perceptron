@@ -24,12 +24,18 @@
     	<button type="button" class="btn btn-primary" onclick="fuxingMap()">復興區</button>
     </div>
     <div id="map"></div>
+    <div style="text-align: center;">
+    	<button id="cl1" type="button" class="btn btn-primary active" onclick="setVisible1(marker_0)">Cluster1</button>
+    	<button id="cl2" type="button" class="btn btn-primary active" onclick="setVisible2(marker_1)">Cluster2</button>
+    	<button id="cl3" type="button" class="btn btn-primary active" onclick="setVisible3(marker_2)">Cluster3</button>
+    	<button id="cl4" type="button" class="btn btn-primary active" onclick="setVisible4(marker_3)">Cluster4</button>
+    </div>
     <script>
-  	  var guaninmap;
-	  var xinwumap;
-      var dasimap;
-      var fuxingmap;
-      var markers = [];
+      var map;
+      var marker_0 = [];
+      var marker_1 = [];
+      var marker_2 = [];
+      var marker_3 = [];
 
       var guanin_0 = [{"lng":121.146513,"lat":25.014694},
 					{"lng":121.121511,"lat":25.003916},
@@ -12989,164 +12995,218 @@
 					{"lng":121.359144,"lat":24.807706}];
 
       function guaninMap() {
-        guaninmap = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
           center: {lng: 121.104447, lat: 25.020337}
         });
 
         guanin_0.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_0[i] = new google.maps.Marker({
             position: e,
-            map: guaninmap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
           });
-          markers[i].setMap(guaninmap);
+          marker_0[i].setMap(map);
         });
         guanin_1.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_1[i] = new google.maps.Marker({
             position: e,
-            map: guaninmap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
           });
-          markers[i].setMap(guaninmap);
+          marker_1[i].setMap(map);
         });
         guanin_2.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_2[i] = new google.maps.Marker({
             position: e,
-            map: guaninmap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
           });
-          markers[i].setMap(guaninmap);
+          marker_2[i].setMap(map);
         });
         guanin_3.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_3[i] = new google.maps.Marker({
             position: e,
-            map: guaninmap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
           });
-          markers[i].setMap(guaninmap);
+          marker_3[i].setMap(map);
         });
       }
 
       function xinwuMap() {
-        xinwumap = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
           center: {lng: 121.083258, lat: 24.976416}
         });
 
         xinwu_0.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_0[i] = new google.maps.Marker({
             position: e,
-            map: xinwumap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
           });
-          markers[i].setMap(xinwumap);
+          marker_0[i].setMap(map);
         });
         xinwu_1.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_1[i] = new google.maps.Marker({
             position: e,
-            map: xinwumap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
           });
-          markers[i].setMap(xinwumap);
+          marker_1[i].setMap(map);
         });
         xinwu_2.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_2[i] = new google.maps.Marker({
             position: e,
-            map: xinwumap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
           });
-          markers[i].setMap(xinwumap);
+          marker_2[i].setMap(map);
         });
         xinwu_3.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_3[i] = new google.maps.Marker({
             position: e,
-            map: xinwumap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
           });
-          markers[i].setMap(xinwumap);
+          marker_3[i].setMap(map);
         });
       }
 
       function dasiMap() {
-        dasimap = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
           center: {lng: 121.303841, lat: 24.877564}
         });
 
         dasi_0.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_0[i] = new google.maps.Marker({
             position: e,
-            map: dasimap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
           });
-          markers[i].setMap(dasimap);
+          marker_0[i].setMap(map);
         });
         dasi_1.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_1[i] = new google.maps.Marker({
             position: e,
-            map: dasimap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
           });
-          markers[i].setMap(dasimap);
+          marker_1[i].setMap(map);
         });
         dasi_2.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_2[i] = new google.maps.Marker({
             position: e,
-            map: dasimap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
           });
-          markers[i].setMap(dasimap);
+          marker_2[i].setMap(map);
         });
         dasi_3.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_3[i] = new google.maps.Marker({
             position: e,
-            map: dasimap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
           });
-          markers[i].setMap(dasimap);
+          marker_3[i].setMap(map);
         });
       }
 
       function fuxingMap() {
-        fuxingmap = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
           center: {lat: 24.757748, lng: 121.358878}
         });
 
         fuxing_0.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_0[i] = new google.maps.Marker({
             position: e,
-            map: fuxingmap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
           });
-          markers[i].setMap(fuxingmap);
+          marker_0[i].setMap(map);
         });
         fuxing_1.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_1[i] = new google.maps.Marker({
             position: e,
-            map: fuxingmap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
           });
-          markers[i].setMap(fuxingmap);
+          marker_1[i].setMap(map);
         });
         fuxing_2.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_2[i] = new google.maps.Marker({
             position: e,
-            map: fuxingmap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
           });
-          markers[i].setMap(fuxingmap);
+          marker_2[i].setMap(map);
         });
         fuxing_3.forEach(function(e, i){
-          markers[i] = new google.maps.Marker({
+          marker_3[i] = new google.maps.Marker({
             position: e,
-            map: fuxingmap,
+            map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
           });
-          markers[i].setMap(fuxingmap);
+          marker_3[i].setMap(map);
         });
       }
+
+	  function setVisible1(marker) {
+	  	if(document.getElementById('cl1').classList.contains("active")){
+	  		marker.forEach(function(e, i){
+	  			marker[i].setMap(null);
+	  		});
+	  		document.getElementById('cl1').classList.remove("active");
+	  	}else{
+	  		marker.forEach(function(e, i){
+	  			marker[i].setMap(map);
+	  		});
+	  		document.getElementById('cl1').classList.add("active");
+	  	}
+	  }
+	  function setVisible2(marker) {
+	  	if(document.getElementById('cl2').classList.contains("active")){
+	  		marker.forEach(function(e, i){
+	  			marker[i].setMap(null);
+	  		});
+	  		document.getElementById('cl2').classList.remove("active");
+	  	}else{
+	  		marker.forEach(function(e, i){
+	  			marker[i].setMap(map);
+	  		});
+	  		document.getElementById('cl2').classList.add("active");
+	  	}
+	  }
+	  function setVisible3(marker) {
+	  	if(document.getElementById('cl3').classList.contains("active")){
+	  		marker.forEach(function(e, i){
+	  			marker[i].setMap(null);
+	  		});
+	  		document.getElementById('cl3').classList.remove("active");
+	  	}else{
+	  		marker.forEach(function(e, i){
+	  			marker[i].setMap(map);
+	  		});
+	  		document.getElementById('cl3').classList.add("active");
+	  	}
+	  }
+	  function setVisible4(marker) {
+	  	if(document.getElementById('cl4').classList.contains("active")){
+	  		marker.forEach(function(e, i){
+	  			marker[i].setMap(null);
+	  		});
+	  		document.getElementById('cl4').classList.remove("active");
+	  	}else{
+	  		marker.forEach(function(e, i){
+	  			marker[i].setMap(map);
+	  		});
+	  		document.getElementById('cl4').classList.add("active");
+	  	}
+	  }
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgHQf5fgJFQMUau3cb1R2qfr2gmJjx9SI&callback=initMap"
     async defer></script>
