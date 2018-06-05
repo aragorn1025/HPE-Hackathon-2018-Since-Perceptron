@@ -3,15 +3,9 @@
 *~
 *.swp
 
-# data, should be secreat
-**/data/
-
 # temp files
 **/temp/
 **/.ipynb_checkpoints/
-
-# jupyter notebook
-*.ipynb
 
 ######## Python ################################################################################
 ######## http://github.com/github/gitignore ####################################################
