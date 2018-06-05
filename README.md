@@ -4,13 +4,12 @@
 
 * [競賽相關資訊](#hackathon_info)
 * [團隊資訊](#team_info)
-* [初選簡報](#first_selection_slides)
+* [初選簡報](#preliminary_slides)
+* [決賽簡報](#final_slides)
 * [環境設置 (Windows)](#environment)
   * [Anaconda](#anaconda)
   * [TensorFlow (CPU verion)](#tensorflow_cpu)
   * [Keras](#keras)
-* [實作](#implement)
-  * 實作中，將陸續增加
 
 * * *
 
@@ -38,11 +37,19 @@
 
 * * *
 
-<h2 id="first_selection_slides">初選簡報</h2>
+<h2 id="preliminary_slides">初選簡報</h2>
 
-* [智慧燈具資料分析以改善燈具維修路線與期程][first_slides]
+* [智慧燈具資料分析以改善燈具維修路線與期程 - 初選簡報][preliminary_slides]
 
-  [first_slides]: https://github.com/aragorn1025/HPE-Hackathon-2018-Since-Perceptron/raw/master/slides/Hackathon-v2.3.pptx
+  [preliminary_slides]: https://github.com/aragorn1025/HPE-Hackathon-2018-Since-Perceptron/raw/master/slides/preliminary.pptx
+
+* * *
+
+<h2 id="final_slides">決賽簡報</h2>
+
+* [智慧燈具資料分析以改善燈具維修路線與期程 - 決賽簡報][final_slides]
+
+  [final_slides]: https://github.com/aragorn1025/HPE-Hackathon-2018-Since-Perceptron/raw/master/slides/final.pptx
 
 * * *
 
@@ -111,7 +118,3 @@
 [readme_tensorflow_cpu]: https://github.com/aragorn1025/HPE-Hackathon-2018-Since-Perceptron/blob/master/README.md#tensorflow_cpu
 
 * * *
-
-<h2 id="implement">實作</h2>
-
-實作中，將陸續增加
